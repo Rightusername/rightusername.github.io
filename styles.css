@@ -1,0 +1,247 @@
+#field{
+    background-image: url("img/back.png");
+    background-size: 25%;
+    border: 5px solid black;
+}
+
+#field tr td{
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    display: inline-block;
+    padding: 0;
+}
+
+#field tr{
+    font-size: 0;
+    margin: 0;
+    display: block;
+}
+
+.field_wrap {
+    margin-top: 100px;
+    display: inline-block;
+}
+
+
+.headTop{
+    position: relative;
+}
+
+.headBot{
+    position: relative;
+}
+
+.headLeft{
+    position: relative;
+    transition: all linear 1s;
+}
+
+
+.headRight{
+    position: relative;
+}
+
+.headTop:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/stock.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.headBot:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/stock.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.headLeft:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/stock.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.headRight:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/stock.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.headEatTop{
+    position: relative;
+}
+
+.headEatBot{
+    position: relative;
+}
+
+.headEatLeft{
+    position: relative;
+}
+
+.headEatRight{
+    position: relative;
+}
+
+.headFail{
+    background-image: url("img/heads/fail.png");
+    background-size: contain;
+}
+
+.headEatTop:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/eat.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.headEatBot:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/eat.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.headEatLeft:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/eat.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.headEatRight:Before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("img/heads/eat.png") 0 0 no-repeat;
+    background-size: cover;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.empty{
+    /*border: 2px solid yellow;*/
+    /*background-color: greenyellow;*/
+    /*transition: all linear .7s;*/
+}
+
+
+.snakeBody{
+    background-color: green;
+}
+
+.snakeBodyTLAngle{
+    border-radius: 100% 0 0 0 ;
+}
+
+.snakeBodyTRAngle{
+    border-radius: 0 100% 0 0 ;
+}
+
+.snakeBodyBLAngle{
+    border-radius: 0 0 0 100%;
+}
+
+.snakeBodyBRAngle{
+    border-radius: 0 0 100% 0;
+}
+
+.snakeEndBot{
+    border-radius: 0 0 50% 50%;
+}
+
+.snakeEndTop{
+    border-radius: 50% 50% 0 0;
+}
+
+.snakeEndLeft{
+    border-radius: 50% 0 0 50%;
+}
+
+.snakeEndRight{
+    border-radius: 0 50% 50% 0;
+}
+
+.food{
+    background: url("img/eat/apple.png") no-repeat 100% ;
+    background-size: contain;
+}
+
+
+.foodCow{
+    background: url("img/eat/cow.png") no-repeat ;
+    background-size: contain;
+}
+
+.foodHorse{
+    background: url("img/eat/horse.png") no-repeat ;
+    background-size: contain;
+}
+
+body{
+    text-align: center;
+}
+
