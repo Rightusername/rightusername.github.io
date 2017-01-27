@@ -1,3 +1,48 @@
+#newgame{
+    display: inline-block;
+    float: left;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #85c827;
+    color: white;
+    border: 2px solid white;
+}
+
+#score{
+    display: inline-block;
+    float: right;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 40px;
+    font-family: Aharoni;
+    color: #5d1e7e;
+}
+
+nav{
+    display: inline-block;
+    margin: auto;
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #85c827;
+}
+
+h1{
+    color: yellow;
+    font-size: 60px;
+    margin-bottom: 1px;
+    margin-top: 10px;
+    height: 60px;
+    text-align: left;
+}
+
+.imgtop{
+    height: 100%;
+    float: right;
+}
+
 #field{
     background-image: url("img/back.png");
     background-size: 25%;
@@ -20,7 +65,7 @@
 }
 
 .field_wrap {
-    margin-top: 100px;
+
     display: inline-block;
 }
 
@@ -243,5 +288,6 @@
 
 body{
     text-align: center;
+    background: url("img/background.jpg");
 }
 

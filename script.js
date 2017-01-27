@@ -10,7 +10,9 @@ $(function () {
             snakeY: [],
             foodX: 0,
             foodY: 0,
-            isDead: false
+            isDead: false,
+            score: 0,
+            speed: 50
         };
 
         this.sounds = {
@@ -19,6 +21,8 @@ $(function () {
             end: new Audio(),
             horse: new Audio()
         };
+
+        this.scoreView = $("#score");
         this.interval = undefined;
         this.field = this.createFieldView();
 
@@ -73,6 +77,20 @@ $(function () {
         }
     };
 
+    Snake.prototype.clearModel = function () {
+        for (var i = 0; i < this.model.fieldHeight; i++) {
+            for (var j = 0; j < this.model.fieldWidth; j++) {
+                this.model.field[i][j] = 0;
+            }
+        }
+        this.model.snakeX = [];
+        this.model.snakeY = [];
+        this.model.isDead = false;
+        this.model.direction = "left";
+        this.model.score = 0;
+
+    };
+
     Snake.prototype.clearField = function () {
         for (var i = 0; i < this.model.fieldHeight; i++) {
             for (var j = 0; j < this.model.fieldWidth; j++) {
@@ -124,6 +142,7 @@ $(function () {
                 }
             }
         }
+        this.scoreView.html("Score : "+ this.model.score);
         this.renderHead();
         this.renderBody();
         this.renderEnd();
@@ -230,7 +249,7 @@ $(function () {
         this.spawnFood();
         this.interval = setInterval(function () {
             __self.step();
-        }, 100);
+        }, this.model.speed);
 
         this.render();
     };
@@ -239,6 +258,19 @@ $(function () {
         clearInterval(this.interval);
         this.model.isDead = true;
         soundPlay("endGame", this);
+    };
+
+    Snake.prototype.newGame = function () {
+        var __self = this;
+        this.clearModel();
+        this.spawnSnake();
+        this.snakeOnField();
+        this.spawnFood();
+        clearInterval(this.interval);
+        this.interval = setInterval(function () {
+            __self.step();
+        }, this.model.speed);
+        this.render();
     };
 
     Snake.prototype.keyListeners = function (self) {
@@ -270,6 +302,7 @@ $(function () {
                     break;
             }
         });
+        $("#newgame").on("click",this.newGame.bind(this));
     };
 
     Snake.prototype.step = function () {
@@ -277,6 +310,21 @@ $(function () {
         this.clearField();
         this.snakeOnField();
         this.render();
+    };
+
+    Snake.prototype.eat = function (index, t) {
+        soundPlay(t.model.field[t.model.foodY][t.model.foodX], t);
+        switch (index){
+            case 2:
+                t.model.score+=1;
+                break;
+            case 3:
+                t.model.score+=5;
+                break;
+            case 4:
+                t.model.score+=20;
+                break;
+        }
     };
 
     Snake.prototype.move = function () {
@@ -333,7 +381,7 @@ $(function () {
             return;
         }
         if (this.model.snakeX[0] == this.model.foodX && this.model.snakeY[0] == this.model.foodY) {
-            soundPlay(this.model.field[this.model.foodY][this.model.foodX], this);
+            this.eat(this.model.field[this.model.foodY][this.model.foodX], this);
             this.spawnFood();
             this.model.snakeX.splice(1, 0, previousX);
             this.model.snakeY.splice(1, 0, previousY);
