@@ -276,30 +276,35 @@ $(function () {
     Snake.prototype.keyListeners = function (self) {
         addEventListener("keydown", function (e) {
             switch (e.keyCode) {
-                case 68 || 39:
-                    if (self.model.direction != "left") {
-                        self.model.direction = "right";
-                       // self.step();
-                    }
-                    break;
-                case 83 || 40:
+                case 39:
+                case 68:
+                if (self.model.direction != "left") {
+                    self.model.direction = "right";
+                    // self.step();
+                }
+                break;
+                case 83:
+                case 40:
                     if (self.model.direction != "top") {
                         self.model.direction = "bot";
-                       // self.step();
+                        // self.step();
                     }
                     break;
-                case 87 || 38:
+                case 87:
+                case 38:
                     if (self.model.direction != "bot") {
                         self.model.direction = "top";
-                       // self.step();
+                        // self.step();
                     }
                     break;
-                case 65 || 37:
+                case 37:
+                case 65:
                     if (self.model.direction != "right") {
                         self.model.direction = "left";
-                       // self.step();
+                        // self.step();
                     }
                     break;
+
             }
         });
         $("#newgame").on("click",this.newGame.bind(this));
