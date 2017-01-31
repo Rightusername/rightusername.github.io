@@ -12,16 +12,18 @@ $(function () {
             foodY: 0,
             isDead: false,
             score: 0,
-            speed: 50
+            multiplier:1
         };
-
+        this.levels = [250,180,120,80,50,30];
+        this.speed = this.levels[window.level];
+        this.initMultiplier();
         this.sounds = {
             eat: new Audio(),
             cow: new Audio(),
             end: new Audio(),
             horse: new Audio()
         };
-
+        this.initView();
         this.scoreView = $("#score");
         this.interval = undefined;
         this.field = this.createFieldView();
@@ -249,9 +251,39 @@ $(function () {
         this.spawnFood();
         this.interval = setInterval(function () {
             __self.step();
-        }, this.model.speed);
+        }, this.speed);
 
         this.render();
+    };
+
+    Snake.prototype.initMultiplier = function () {
+        var index;
+        for (var i = 0; i < this.levels.length; i++) {
+            if(this.speed == this.levels[i]){
+                index = i;
+            }
+
+        }
+        switch (index){
+            case 0:
+                this.multiplier = 1;
+                break;
+            case 1:
+                this.multiplier = 1.5;
+                break;
+            case 2:
+                this.multiplier = 2;
+                break;
+            case 3:
+                this.multiplier = 3;
+                break;
+            case 4:
+                this.multiplier = 5;
+                break;
+            case 5:
+                this.multiplier = 10;
+                break;
+        }
     };
 
     Snake.prototype.finishGame = function () {
@@ -262,6 +294,8 @@ $(function () {
 
     Snake.prototype.newGame = function () {
         var __self = this;
+        this.speed = this.levels[window.level];
+        this.initMultiplier();
         this.clearModel();
         this.spawnSnake();
         this.snakeOnField();
@@ -269,8 +303,15 @@ $(function () {
         clearInterval(this.interval);
         this.interval = setInterval(function () {
             __self.step();
-        }, this.model.speed);
+        }, this.speed);
         this.render();
+        console.log(window.level);
+    };
+
+    Snake.prototype.initView = function () {
+        $("body").css("height", window.innerHeight);
+        $("#settings").css("top", (window.innerHeight - document.getElementById("settings").offsetHeight)/2);
+        $("#settings").css("left", (window.innerWidth - document.getElementById("settings").offsetWidth)/2);
     };
 
     Snake.prototype.keyListeners = function (self) {
@@ -308,6 +349,13 @@ $(function () {
             }
         });
         $("#newgame").on("click",this.newGame.bind(this));
+        $("#btnSetApply").on("click",function () {
+            self.model.speed = $("#settingsVal").val();
+            self.newGame();
+        });
+        $("#btnSettings").on("click",function () {
+            $("#settings").css("display","block");
+        });
     };
 
     Snake.prototype.step = function () {
@@ -321,13 +369,13 @@ $(function () {
         soundPlay(t.model.field[t.model.foodY][t.model.foodX], t);
         switch (index){
             case 2:
-                t.model.score+=1;
+                t.model.score+=Math.floor(1*t.multiplier);
                 break;
             case 3:
-                t.model.score+=5;
+                t.model.score+=Math.floor(5*t.multiplier);
                 break;
             case 4:
-                t.model.score+=20;
+                t.model.score+=Math.floor(20*t.multiplier);
                 break;
         }
     };

@@ -6,6 +6,13 @@
     background-color: #85c827;
     color: white;
     border: 2px solid white;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+#newgame:active{
+    background-color: #E0E0E0;
 }
 
 #score{
@@ -33,7 +40,7 @@ h1{
     color: yellow;
     font-size: 60px;
     margin-bottom: 1px;
-    margin-top: 10px;
+    margin-top: 18px;
     height: 60px;
     text-align: left;
 }
@@ -289,5 +296,49 @@ h1{
 body{
     text-align: center;
     background: url("img/background.jpg");
+    position: relative;
+    margin: 0;
+}
+
+
+
+#settings{
+    background-color: transparent;
+    border: 2px solid white;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: white;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    margin-left: 10px;
+    box-sizing: border-box;
+    padding: 3px 5px 0px 5px;
+    font-weight: 700;
+}
+
+
+.slider {
+    border-radius: 5px;
+    background: #E0E0E0;
+    background: -moz-linear-gradient(left top, #E0E0E0, #EEEEEE) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, right bottom, from(#E0E0E0), to(#EEEEEE));
+    background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+    width: 100px;
+    position: relative;
+    height: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.thumb {
+    width: 10px;
+    height: 15px;
+    border-radius: 3px;
+    position: absolute;
+    left: 45px;
+    top: -5px;
+    background: yellow;
+    cursor: pointer;
 }
 
