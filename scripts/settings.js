@@ -91,7 +91,6 @@ $(function () {
 
 
     function loadRecources() {
-        var load = document.getElementsByClassName("loading")[0];
         var apple = document.createElement("img");
         apple.src = "img/eat/apple.png";
         var cow = document.createElement("img");
