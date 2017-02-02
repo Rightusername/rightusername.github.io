@@ -14,7 +14,6 @@ $(function () {
             score: 0,
             multiplier:1
         };
-        this.initResources();
         this.levels = [250,180,120,80,50,30];
         this.speed = this.levels[window.level];
         this.initMultiplier();
@@ -257,20 +256,6 @@ $(function () {
         this.render();
     };
     
-    Snake.prototype.initResources = function () {
-        var apple = document.createElement("img");
-        apple.src = "img/eat/apple.png";
-        var cow = document.createElement("img");
-        cow.src = "img/eat/cow.png";
-        var horse = document.createElement("img");
-        horse.src = "img/eat/horse.png";
-        var back = document.createElement("img");
-        back.src = "img/heads/eat.png";
-        var fail = document.createElement("img");
-        fail.src = "img/heads/fail.png";
-        var stock = document.createElement("img");
-        stock.src = "img/heads/stock.png";
-    };
     
     Snake.prototype.initMultiplier = function () {
         var index;

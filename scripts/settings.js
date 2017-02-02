@@ -1,4 +1,5 @@
 $(function () {
+    loadRecources();
     var storage = window.localStorage;
     var thumb = document.getElementById("thumb");
     var slider = document.getElementById("slider");
@@ -6,7 +7,9 @@ $(function () {
     thumb.style.left = storage.getItem("thumb") || 0 + "px";
     var level = 0;
     checkLevel();
-    thumb.onmousedown = function (e) {
+
+
+    slider.onmousedown = function (e) {
 
         var coords = getCoords(thumb);
         var shiftX = e.pageX - coords.left;
@@ -84,6 +87,31 @@ $(function () {
             level = 5;
         }
         window.level = level;
+    }
+
+
+    function loadRecources() {
+        var load = document.createElement("div");
+        load.className = "loading";
+        load.innerHTML = "Loading...";
+        document.body.appendChild(load);
+        var apple = document.createElement("img");
+        apple.src = "img/eat/apple.png";
+        var cow = document.createElement("img");
+        cow.src = "img/eat/cow.png";
+        var horse = document.createElement("img");
+        horse.src = "img/eat/horse.png";
+        var eat = document.createElement("img");
+        eat.src = "img/heads/eat.png";
+        var fail = document.createElement("img");
+        fail.src = "img/heads/fail.png";
+        var stock = document.createElement("img");
+        stock.src = "img/heads/stock.png";
+        var back = document.createElement("img");
+        back.src = "img/back.png";
+        var background = document.createElement("img");
+        background.src = "img/background.jpg";
+        load.style.display = "none";
     }
 
 });
