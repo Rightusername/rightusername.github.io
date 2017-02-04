@@ -349,6 +349,7 @@ $(function () {
 
             }
         });
+        swipes(this);
         $("#newgame").on("click",this.newGame.bind(this));
         $("#btnSetApply").on("click",function () {
             self.model.speed = $("#settingsVal").val();
@@ -358,6 +359,49 @@ $(function () {
             $("#settings").css("display","block");
         });
     };
+
+    function swipes(self){
+        var firstX, firstY, endX, endY;
+        document.onmousedown = function (e) {
+            e.preventDefault();
+            firstX = e.clientX;
+            firstY = e.clientY;
+        };
+        document.onmouseup = function (e) {
+            e.preventDefault();
+            endX = e.clientX;
+            endY = e.clientY;
+
+            if ((firstX < endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //right
+                if (self.model.direction != "left") {
+                    self.model.direction = "right";
+                }
+            }
+            if ((firstX > endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //left
+                if (self.model.direction != "right") {
+                    self.model.direction = "left";
+                }
+            }
+            if ((firstY > endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //up
+                if (self.model.direction != "bot") {
+                    self.model.direction = "top";
+                }
+            }
+            if ((firstY < endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //down
+                if (self.model.direction != "top") {
+                    self.model.direction = "bot";
+                }
+            }
+        };
+
+
+
+
+
+
+
+
+    }
 
     Snake.prototype.step = function () {
         this.move();
