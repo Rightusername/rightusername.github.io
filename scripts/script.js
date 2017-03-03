@@ -14,8 +14,9 @@ $(function () {
             score: 0,
             multiplier: 1
         };
-        this.levels = [250, 180, 120, 80, 50, 30];
+        this.levels = [750, 180, 120, 80, 50, 30];
         this.speed = this.levels[window.level];
+        this.delay = false;
         this.initMultiplier();
         this.sounds = {
             eat: new Audio(),
@@ -252,6 +253,7 @@ $(function () {
         this.spawnFood();
         this.interval = setInterval(function () {
             __self.step();
+            __self.delay = true;
         }, this.speed);
 
         this.render();
@@ -296,6 +298,7 @@ $(function () {
 
     Snake.prototype.newGame = function () {
         var __self = this;
+        this.delay = false;
         this.speed = this.levels[window.level];
         this.initMultiplier();
         this.clearModel();
@@ -305,6 +308,7 @@ $(function () {
         clearInterval(this.interval);
         this.interval = setInterval(function () {
             __self.step();
+            __self.delay = true;
         }, this.speed);
         this.render();
         console.log(window.level);
@@ -317,34 +321,39 @@ $(function () {
     };
 
     Snake.prototype.keyListeners = function (self) {
+        var delay = true;
         addEventListener("keydown", function (e) {
             switch (e.keyCode) {
                 case 39:
                 case 68:
-                    if (self.model.direction != "left") {
+                    if (self.model.direction != "left" && self.delay) {
                         self.model.direction = "right";
                         // self.step();
+                        self.delay = false;
                     }
                     break;
                 case 83:
                 case 40:
-                    if (self.model.direction != "top") {
+                    if (self.model.direction != "top" && self.delay) {
                         self.model.direction = "bot";
                         // self.step();
+                        self.delay = false;
                     }
                     break;
                 case 87:
                 case 38:
-                    if (self.model.direction != "bot") {
+                    if (self.model.direction != "bot" && self.delay) {
                         self.model.direction = "top";
                         // self.step();
+                        self.delay = false;
                     }
                     break;
                 case 37:
                 case 65:
-                    if (self.model.direction != "right") {
+                    if (self.model.direction != "right" && self.delay) {
                         self.model.direction = "left";
                         // self.step();
+                        self.delay = false;
                     }
                     break;
 
