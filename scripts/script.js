@@ -12,9 +12,9 @@ $(function () {
             foodY: 0,
             isDead: false,
             score: 0,
-            multiplier:1
+            multiplier: 1
         };
-        this.levels = [250,180,120,80,50,30];
+        this.levels = [250, 180, 120, 80, 50, 30];
         this.speed = this.levels[window.level];
         this.initMultiplier();
         this.sounds = {
@@ -67,7 +67,7 @@ $(function () {
         if (c < 0.20) {
             return 3;
         }
-        if(c >0.20 && c<0.24){
+        if (c > 0.20 && c < 0.24) {
             return 4;
         }
         return 2;
@@ -144,7 +144,7 @@ $(function () {
                 }
             }
         }
-        this.scoreView.html("Score : "+ this.model.score);
+        this.scoreView.html("Score : " + this.model.score);
         this.renderHead();
         this.renderBody();
         this.renderEnd();
@@ -218,8 +218,9 @@ $(function () {
                     className = "headBot";
                 }
                 break;
-        }if (this.model.isDead) {
-            className= "headFail";
+        }
+        if (this.model.isDead) {
+            className = "headFail";
         }
         this.field[headY][headX].className = className;
     };
@@ -255,17 +256,17 @@ $(function () {
 
         this.render();
     };
-    
-    
+
+
     Snake.prototype.initMultiplier = function () {
         var index;
         for (var i = 0; i < this.levels.length; i++) {
-            if(this.speed == this.levels[i]){
+            if (this.speed == this.levels[i]) {
                 index = i;
             }
 
         }
-        switch (index){
+        switch (index) {
             case 0:
                 this.multiplier = 1;
                 break;
@@ -311,8 +312,8 @@ $(function () {
 
     Snake.prototype.initView = function () {
         $("body").css("height", window.innerHeight);
-        $("#settings").css("top", (window.innerHeight - document.getElementById("settings").offsetHeight)/2);
-        $("#settings").css("left", (window.innerWidth - document.getElementById("settings").offsetWidth)/2);
+        $("#settings").css("top", (window.innerHeight - document.getElementById("settings").offsetHeight) / 2);
+        $("#settings").css("left", (window.innerWidth - document.getElementById("settings").offsetWidth) / 2);
     };
 
     Snake.prototype.keyListeners = function (self) {
@@ -320,11 +321,11 @@ $(function () {
             switch (e.keyCode) {
                 case 39:
                 case 68:
-                if (self.model.direction != "left") {
-                    self.model.direction = "right";
-                    // self.step();
-                }
-                break;
+                    if (self.model.direction != "left") {
+                        self.model.direction = "right";
+                        // self.step();
+                    }
+                    break;
                 case 83:
                 case 40:
                     if (self.model.direction != "top") {
@@ -350,55 +351,69 @@ $(function () {
             }
         });
         swipes(this);
-        $("#newgame").on("click",this.newGame.bind(this));
-        $("#btnSetApply").on("click",function () {
+        $("#newgame").on("click", this.newGame.bind(this));
+        $("#btnSetApply").on("click", function () {
             self.model.speed = $("#settingsVal").val();
             self.newGame();
         });
-        $("#btnSettings").on("click",function () {
-            $("#settings").css("display","block");
+        $("#btnSettings").on("click", function () {
+            $("#settings").css("display", "block");
         });
     };
 
-    function swipes(self){
+    function swipes(self) {
         var firstX, firstY, endX, endY;
-        document.onmousedown = function (e) {
-            e.preventDefault();
-            firstX = e.clientX;
-            firstY = e.clientY;
-        };
-        document.onmouseup = function (e) {
-            e.preventDefault();
-            endX = e.clientX;
-            endY = e.clientY;
+        document.getElementById("field").addEventListener('touchstart', function (event) {
+            firstX = event.screenX;
+            firstY = event.screenY;
+        });
 
-            if ((firstX < endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //right
-                if (self.model.direction != "left") {
-                    self.model.direction = "right";
-                }
-            }
-            if ((firstX > endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //left
-                if (self.model.direction != "right") {
-                    self.model.direction = "left";
-                }
-            }
-            if ((firstY > endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //up
+        document.getElementById("field").addEventListener('touchend', function (event) {
+            endX = event.offsetX;
+            endY = event.screenY;
+            console.log(endX);
+            if (endX < firstX) {
                 if (self.model.direction != "bot") {
                     self.model.direction = "top";
                 }
             }
-            if ((firstY < endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //down
+            if (endX > firstX) {
+                if (self.model.direction != "left") {
+                    self.model.direction = "right";
+                }
+            }
+            if (endY < firstY) {
                 if (self.model.direction != "top") {
                     self.model.direction = "bot";
                 }
             }
-        };
+            if (endY > firstY) {
+                if (self.model.direction != "right") {
+                    self.model.direction = "left";
+                }
+            }
 
-
-
-
-
-
+            // if ((firstX < endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //right
+            //     if (self.model.direction != "left") {
+            //         self.model.direction = "right";
+            //     }
+            // }
+            // if ((firstX > endX) && (Math.abs(endX - firstX) > Math.abs(endY - firstY))) {   //left
+            //     if (self.model.direction != "right") {
+            //         self.model.direction = "left";
+            //     }
+            // }
+            // if ((firstY > endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //up
+            //     if (self.model.direction != "bot") {
+            //         self.model.direction = "top";
+            //     }
+            // }
+            // if ((firstY < endY) && (Math.abs(endX - firstX) < Math.abs(endY - firstY))) {   //down
+            //     if (self.model.direction != "top") {
+            //         self.model.direction = "bot";
+            //     }
+            // }
+        });
 
 
     }
@@ -412,15 +427,15 @@ $(function () {
 
     Snake.prototype.eat = function (index, t) {
         soundPlay(t.model.field[t.model.foodY][t.model.foodX], t);
-        switch (index){
+        switch (index) {
             case 2:
-                t.model.score+=Math.floor(1*t.multiplier);
+                t.model.score += Math.floor(1 * t.multiplier);
                 break;
             case 3:
-                t.model.score+=Math.floor(5*t.multiplier);
+                t.model.score += Math.floor(5 * t.multiplier);
                 break;
             case 4:
-                t.model.score+=Math.floor(20*t.multiplier);
+                t.model.score += Math.floor(20 * t.multiplier);
                 break;
         }
     };
@@ -456,7 +471,7 @@ $(function () {
                 if (this.model.snakeX[0] == 0) {
                     this.finishGame();
                 } else {
-                    if (this.model.field[this.model.snakeY[0]][this.model.snakeX[0]-1] == 1) {
+                    if (this.model.field[this.model.snakeY[0]][this.model.snakeX[0] - 1] == 1) {
                         this.finishGame();
                     } else {
                         this.model.snakeX[0] -= 1;
@@ -475,7 +490,7 @@ $(function () {
                 }
                 break;
         }
-        if(this.model.isDead){
+        if (this.model.isDead) {
             return;
         }
         if (this.model.snakeX[0] == this.model.foodX && this.model.snakeY[0] == this.model.foodY) {

@@ -1,5 +1,16 @@
 $(function () {
-    loadRecources();
+    preloadImages([
+    "img/eat/apple.png",
+    "img/eat/cow.png",
+    "img/eat/horse.png",
+    "img/heads/eat.png",
+     "img/heads/fail.png",
+    "img/heads/stock.png",
+     "img/back.png",
+    "img/background.jpg"
+    ]);
+
+
     var storage = window.localStorage;
     var thumb = document.getElementById("thumb");
     var slider = document.getElementById("slider");
@@ -89,26 +100,19 @@ $(function () {
         window.level = level;
     }
 
-
-    function loadRecources() {
-        var apple = document.createElement("img");
-        apple.src = "img/eat/apple.png";
-        var cow = document.createElement("img");
-        cow.src = "img/eat/cow.png";
-        var horse = document.createElement("img");
-        horse.src = "img/eat/horse.png";
-        var eat = document.createElement("img");
-        eat.src = "img/heads/eat.png";
-        var fail = document.createElement("img");
-        fail.src = "img/heads/fail.png";
-        var stock = document.createElement("img");
-        stock.src = "img/heads/stock.png";
-        var back = document.createElement("img");
-        back.src = "img/back.png";
+    //предзагрузчик изображений
+    function preloadImages(a) {
+        var ai=[];
+        for(var i=0; i<a.length; i++){
+            ai[i] = new Image();
+            ai[i].src = a[i];
+        }
         var background = document.createElement("img");
         background.src = "img/background.jpg";
         load.style.display = "none";
     }
+
+    
 
 });
 
