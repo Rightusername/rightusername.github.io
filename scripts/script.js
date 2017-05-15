@@ -307,8 +307,8 @@ $(function () {
         this.spawnFood();
         clearInterval(this.interval);
         this.interval = setInterval(function () {
-            __self.step();
             __self.delay = true;
+            __self.step();
         }, this.speed);
         this.render();
         console.log(window.level);
@@ -321,7 +321,6 @@ $(function () {
     };
 
     Snake.prototype.keyListeners = function (self) {
-        var delay = true;
         addEventListener("keydown", function (e) {
             switch (e.keyCode) {
                 case 39:

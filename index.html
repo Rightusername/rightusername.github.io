@@ -19,7 +19,7 @@
     <h1>Snake
         <img src="img/snake-icon.png" alt="" class="imgtop">
     </h1>
-    <nav  onselectstart="return false">
+    <nav onselectstart="return false">
         <button id="newgame">New Game</button>
         <div id="settings">
             <div id="speed">Speed:</div>
@@ -29,8 +29,10 @@
         </div>
         <div id="score">Score : 0</div>
     </nav>
-    <table id="field">
-    </table>
+    <div class="field-border">
+        <table id="field" rules="none">
+        </table>
+    </div>
 </div>
 
 <script>

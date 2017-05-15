@@ -15,8 +15,8 @@ $(function () {
     var thumb = document.getElementById("thumb");
     var slider = document.getElementById("slider");
     var labelSpeed = document.getElementById("speed");
-    thumb.style.left = storage.getItem("thumb") || 0 + "px";
-    var level = 0;
+    thumb.style.left = storage.getItem("thumb") || 55 + "px";
+    var level = 3;
     checkLevel();
 
 
