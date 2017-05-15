@@ -251,10 +251,12 @@ $(function () {
         this.snakeOnField();
         this.keyListeners(this);
         this.spawnFood();
-        this.interval = setInterval(function () {
-            __self.step();
-            __self.delay = true;
-        }, this.speed);
+        setTimeout( function ( ) {
+            __self.interval = setInterval(function () {
+                __self.step();
+                __self.delay = true;
+            }, __self.speed);
+        }, 500 );
 
         this.render();
     };
@@ -545,10 +547,3 @@ $(function () {
 
     window.Snake = new Snake();
 });
-
-
-
-
-
-
-

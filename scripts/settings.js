@@ -2,6 +2,7 @@ $(function () {
     preloadImages([
     "img/eat/apple.png",
     "img/eat/cow.png",
+    "img/eat/tete1.gif",
     "img/eat/horse.png",
     "img/heads/eat.png",
      "img/heads/fail.png",
@@ -41,7 +42,7 @@ $(function () {
             storage.setItem("thumb",thumb.style.left);
             checkLevel();
         }
-        
+
 
         document.onmousemove = function (e) {
             moveAt(e);
@@ -112,7 +113,6 @@ $(function () {
         load.style.display = "none";
     }
 
-    
+
 
 });
-

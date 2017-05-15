@@ -1,4 +1,4 @@
-#newgame{
+#newgame {
     display: inline-block;
     float: left;
     height: 100%;
@@ -11,54 +11,61 @@
     outline: none;
 }
 
-#newgame:active{
+@font-face {
+   font-family: "Comic Sans MS"; /* Имя шрифта */
+   src: url("fonts/comic.ttf"); /* Путь к файлу со шрифтом */
+}
+
+#newgame:active {
     background-color: #E0E0E1;
 }
 
-#score{
+#score {
     display: inline-block;
     float: right;
     height: 100%;
     box-sizing: border-box;
     font-size: 40px;
-    font-family: Aharoni;
-    color: #5d1e7e;
+    color: #ededed;
+    font-family: "Comic Sans MS";
+    margin-top: -10px;
 }
 
-
-
-h1{
+h1 {
     color: yellow;
     font-size: 60px;
-    margin-bottom: 1px;
-    margin-top: 18px;
-    height: 60px;
+    margin: 0px;
+    padding: 0 10px;
+    height: 70px;
     text-align: left;
+    font-family: "Comic Sans MS";
 }
 
-.imgtop{
+.game-label {
+    display: inline-block;
+}
+
+.imgtop {
     height: 100%;
     float: right;
 }
 
-#field{
+#field {
     background-image: url("img/back.png");
     background-size: 11%;
-
 }
 
-nav{
-
+nav {
     margin: auto;
     width: 100%;
     height: 80px;
     padding: 20px;
     box-sizing: border-box;
     background-color: #85c827;
-    margin:0;
+    margin: 0;
 }
 
-.field-border{
+.field-border {
     width: 600px;
     height: 400px;
     padding: 20px;
@@ -66,7 +73,7 @@ nav{
     background-size: 11%;
 }
 
-#field tr td{
+#field tr td {
     height: 20px;
     width: 20px;
     box-sizing: border-box;
@@ -75,37 +82,34 @@ nav{
     padding: 0;
 }
 
-#field tr{
+#field tr {
     font-size: 0;
     margin: 0;
     display: block;
 }
 
 .field_wrap {
-
     display: inline-block;
 }
 
-
-.headTop{
+.headTop {
     position: relative;
 }
 
-.headBot{
+.headBot {
     position: relative;
 }
 
-.headLeft{
+.headLeft {
     position: relative;
     transition: all linear 1s;
 }
 
-
-.headRight{
+.headRight {
     position: relative;
 }
 
-.headTop:Before{
+.headTop:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -121,7 +125,7 @@ nav{
     transform: rotate(-180deg);
 }
 
-.headBot:Before{
+.headBot:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -132,7 +136,7 @@ nav{
     background-size: cover;
 }
 
-.headLeft:Before{
+.headLeft:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -148,7 +152,7 @@ nav{
     transform: rotate(90deg);
 }
 
-.headRight:Before{
+.headRight:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -164,28 +168,28 @@ nav{
     transform: rotate(-90deg);
 }
 
-.headEatTop{
+.headEatTop {
     position: relative;
 }
 
-.headEatBot{
+.headEatBot {
     position: relative;
 }
 
-.headEatLeft{
+.headEatLeft {
     position: relative;
 }
 
-.headEatRight{
+.headEatRight {
     position: relative;
 }
 
-.headFail{
+.headFail {
     background-image: url("img/heads/fail.png");
     background-size: contain;
 }
 
-.headEatTop:Before{
+.headEatTop:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -201,7 +205,7 @@ nav{
     transform: rotate(-180deg);
 }
 
-.headEatBot:Before{
+.headEatBot:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -212,7 +216,7 @@ nav{
     background-size: cover;
 }
 
-.headEatLeft:Before{
+.headEatLeft:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -228,7 +232,7 @@ nav{
     transform: rotate(90deg);
 }
 
-.headEatRight:Before{
+.headEatRight:Before {
     content: "";
     position: absolute;
     width: 100%;
@@ -244,75 +248,80 @@ nav{
     transform: rotate(-90deg);
 }
 
-.empty{
+.empty {
     /*border: 2px solid yellow;*/
     /*background-color: greenyellow;*/
     /*transition: all linear .7s;*/
 }
 
-
-.snakeBody{
+.snakeBody {
     background-color: green;
+    background: url(img/depositphotos_43116853-stock-illustration-snake-skin.jpg) 0 0 no-repeat;
+    background-size: 400%;
+    box-shadow: 3px 2px 25px -2px rgba(0, 0, 0, 0.75);
 }
 
-.snakeBodyTLAngle{
-    border-radius: 100% 0 0 0 ;
+.snakeBodyTLAngle {
+    border-radius: 100% 0 0 0;
 }
 
-.snakeBodyTRAngle{
-    border-radius: 0 100% 0 0 ;
+.snakeBodyTRAngle {
+    border-radius: 0 100% 0 0;
 }
 
-.snakeBodyBLAngle{
+.snakeBodyBLAngle {
     border-radius: 0 0 0 100%;
 }
 
-.snakeBodyBRAngle{
+.snakeBodyBRAngle {
     border-radius: 0 0 100% 0;
 }
 
-.snakeEndBot{
+.snakeEndBot {
     border-radius: 0 0 50% 50%;
 }
 
-.snakeEndTop{
+.snakeEndTop {
     border-radius: 50% 50% 0 0;
 }
 
-.snakeEndLeft{
+.snakeEndLeft {
     border-radius: 50% 0 0 50%;
 }
 
-.snakeEndRight{
+.snakeEndRight {
     border-radius: 0 50% 50% 0;
 }
 
-.food{
-    background: url("img/eat/apple.png") no-repeat 100% ;
+.food {
+    background: rgba(232,46,121,0.23) url("img/eat/apple.png") no-repeat 100%;
     background-size: contain;
+
+    box-shadow: 2px 2px 81px 5px rgba(232,46,121,1);
+
 }
 
-
-.foodCow{
-    background: url("img/eat/cow.png") no-repeat ;
+.foodCow {
+    background: rgba(255,255,255,0.2) url("img/eat/tete1.gif") no-repeat;
     background-size: contain;
+    box-shadow: 2px 2px 81px 11px rgba(255,255,255,1);
 }
 
-.foodHorse{
-    background: url("img/eat/horse.png") no-repeat ;
+.foodHorse {
+    background: rgba(247,255,0,0.4) url("img/eat/horse.png") no-repeat;
     background-size: contain;
+    box-shadow: 2px 2px 84px 22px rgba(247,255,0,1);
 }
 
-body{
+body {
     text-align: center;
     background: url("img/background.jpg");
+    background-size: 40%;
     position: relative;
     margin: 0;
 }
 
-
-
-#settings{
+#settings {
     background-color: transparent;
     border: 2px solid white;
     font-family: sans-serif;
@@ -326,7 +335,6 @@ body{
     padding: 3px 5px 0px 5px;
     font-weight: 700;
 }
-
 
 .slider {
     border-radius: 5px;
@@ -353,8 +361,7 @@ body{
     cursor: pointer;
 }
 
-
-.loading{
+.loading {
     color: white;
     font-size: 60px;
     position: absolute;
