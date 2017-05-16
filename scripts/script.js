@@ -530,15 +530,19 @@ $(function () {
     function soundPlay(index, t) {
         switch (index) {
             case 3:
+                t.sounds.cow.currentTime = 0;
                 t.sounds.cow.play();
                 break;
             case 2:
+                t.sounds.eat.currentTime = 0;
                 t.sounds.eat.play();
                 break;
             case "endGame":
+                t.sounds.end.currentTime = 0;
                 t.sounds.end.play();
                 break;
             case 4:
+                t.sounds.horse.currentTime = 0;
                 t.sounds.horse.play();
                 break;
         }
