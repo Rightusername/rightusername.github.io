@@ -13,7 +13,7 @@
 
 @font-face {
    font-family: "Comic Sans MS"; /* Имя шрифта */
-   src: url("fonts/comic.ttf"); /* Путь к файлу со шрифтом */
+   src: url(fonts/comic.ttf); /* Путь к файлу со шрифтом */
 }
 
 #newgame:active {

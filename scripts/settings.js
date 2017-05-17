@@ -9,7 +9,7 @@ $(function () {
     "img/heads/stock.png",
      "img/back.png",
     "img/background.jpg",
-    "depositphotos_43116853-stock-illustration-snake-skin.jpg"
+    "img/depositphotos_43116853-stock-illustration-snake-skin.jpg"
     ]);
 
 
