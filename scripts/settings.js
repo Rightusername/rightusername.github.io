@@ -8,7 +8,8 @@ $(function () {
      "img/heads/fail.png",
     "img/heads/stock.png",
      "img/back.png",
-    "img/background.jpg"
+    "img/background.jpg",
+    "depositphotos_43116853-stock-illustration-snake-skin.jpg"
     ]);
 
 
