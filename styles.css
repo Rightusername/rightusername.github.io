@@ -20,15 +20,28 @@
     background-color: #E0E0E1;
 }
 
+#bestScore{
+    text-align: left;
+    margin-top: -15px;
+    height: 60%;
+    font-size: 17px;
+}
+
 #score {
+
+    height: 60%;
+    box-sizing: border-box;
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+.scores{
     display: inline-block;
     float: right;
     height: 100%;
-    box-sizing: border-box;
-    font-size: 40px;
     color: #ededed;
     font-family: "Comic Sans MS";
-    margin-top: -10px;
+    box-sizing: border-box;
 }
 
 h1 {

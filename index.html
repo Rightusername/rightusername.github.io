@@ -8,6 +8,7 @@
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 </head>
 <body>
 <div class="loading">Loading...</div>
@@ -28,7 +29,11 @@
                 <div class="thumb" id="thumb"></div>
             </div>
         </div>
-        <div id="score">Score : 0</div>
+        <div class="scores">
+            <div id="bestScore">best</div>
+            <div id="score">Score : 0</div>
+        </div>
+
     </nav>
     <div class="field-border">
         <table id="field" rules="none">

@@ -28,7 +28,7 @@ $(function () {
         this.scoreView = $("#score");
         this.interval = undefined;
         this.field = this.createFieldView();
-
+        this.records;
         this.init();
 
     };
@@ -146,6 +146,7 @@ $(function () {
             }
         }
         this.scoreView.html("Score : " + this.model.score);
+        $("#bestScore").html("Best: " + this.records[window.level]);
         this.renderHead();
         this.renderBody();
         this.renderEnd();
@@ -295,7 +296,14 @@ $(function () {
     Snake.prototype.finishGame = function () {
         clearInterval(this.interval);
         this.model.isDead = true;
-        soundPlay("endGame", this);
+        soundPlay("endGame", this)
+        console.log(this.records[window.level] , this.model.score);
+        if(this.records[window.level] < this.model.score ){
+            this.records[window.level] = this.model.score;
+            $("#bestScore").html("Best: " + this.model.score);
+            localStorage.setItem("records", JSON.stringify(this.records));
+            console.log(this.records);
+        }
     };
 
     Snake.prototype.newGame = function () {
@@ -313,13 +321,19 @@ $(function () {
             __self.step();
         }, this.speed);
         this.render();
-        console.log(window.level);
     };
 
     Snake.prototype.initView = function () {
         $("body").css("height", window.innerHeight);
         $("#settings").css("top", (window.innerHeight - document.getElementById("settings").offsetHeight) / 2);
         $("#settings").css("left", (window.innerWidth - document.getElementById("settings").offsetWidth) / 2);
+        if(localStorage.getItem("records")) {
+            this.records = JSON.parse(localStorage.getItem("records"));
+            $("#bestScore").html("Best: " + this.records[window.level]);
+        }else{
+            this.records = {"0": 0, "1":0,"2":0,"3":0,"4":0,"5":0 };
+            $("#bestScore").html("Best: " + 0);
+        }
     };
 
     Snake.prototype.keyListeners = function (self) {
@@ -547,7 +561,6 @@ $(function () {
                 break;
         }
     }
-
 
     window.Snake = new Snake();
 });
